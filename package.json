@@ -1,0 +1,39 @@
+{
+  "name": "webdev",
+  "version": "0.0.1",
+  "type": "module",
+  "svelte": "index.js",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "package": "svelte-kit package",
+    "preview": "svelte-kit preview",
+    "prepare": "svelte-kit sync",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
+    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "next",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.13",
+    "postcss-import": "^14.1.0",
+    "prettier": "^2.6.2",
+    "prettier-plugin-svelte": "^2.7.0",
+    "svelte": "^3.48.0",
+    "svelte-check": "^2.7.0",
+    "svelte-preprocess": "^4.10.6",
+    "tailwindcss": "^3.0.24",
+    "tslib": "^2.4.0",
+    "typescript": "~4.6.4"
+  },
+  "dependencies": {
+    "just-debounce": "^1.1.0",
+    "just-safe-get": "^4.0.1",
+    "knex": "^2.0.0",
+    "knex-firebird-dialect": "^1.1.8",
+    "svelte-tiny-virtual-list": "^2.0.3"
+  }
+}
