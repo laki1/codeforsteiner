@@ -1,0 +1,1 @@
+docker run --name firebird2 -e "ISC_PASSWORD=masterkey" -e "TZ=Europe/Prague" -p 3050:3050 -v db:/firebird jacobalberty/firebird:2.5-sc

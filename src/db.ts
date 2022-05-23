@@ -1,15 +1,36 @@
-import knex from 'knex'
-import knexFirebirdDialect from 'knex-firebird-dialect'
+import knex from "knex";
+import knexFirebirdDialect from "knex-firebird-dialect";
+import knexMariaDbDialect from "knex-mariadb";
+import { DEBUG, DB }  from "~/config.js";
 
-export default knex({
-  client: knexFirebirdDialect,
-  connection: {
-    host: '127.0.0.1',
-    database: '/firebird/data/tabunis.fdb',
-    user: 'SYSDBA',
-    password: 'masterkey',
-    lowercase_keys: true,
-    port: 3050,
-    debug: true,
-  },
-})
+let config = {};
+
+if (DB.TYPE === "mariadb") {
+  config = {
+    client: knexMariaDbDialect,
+    connection: {    
+      host:     DB.SERVER,
+      port:     DB.PORT,
+      user:     DB.USER,
+      password: DB.PASSWORD,
+      database: DB.DATABASE_CONNECTION_STRING
+    },
+    debug: DEBUG
+  };
+} else {
+  //default: firebird
+  config = {
+    client: knexFirebirdDialect,
+    connection: {
+      host:     DB.SERVER,
+      port:     DB.PORT,
+      database: DB.DATABASE_CONNECTION_STRING,
+      user:     DB.USER,
+      password: DB.PASSWORD,
+      lowercase_keys: true,      
+      debug: DEBUG
+    }
+  }; 
+}
+
+export default knex( config );

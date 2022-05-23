@@ -34,6 +34,10 @@
     "just-safe-get": "^4.0.1",
     "knex": "^2.0.0",
     "knex-firebird-dialect": "^1.1.8",
-    "svelte-tiny-virtual-list": "^2.0.3"
+    "knex-mariadb": "^2.0.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "svelte-tiny-virtual-list": "^2.0.3",
+    "util.promisify": "^1.1.1"
   }
 }
