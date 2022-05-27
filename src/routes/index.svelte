@@ -1,23 +1,27 @@
-<script lang="ts">
-  import { onMount } from 'svelte';
+<script lang="ts">  
   import AutoComplete from '~/components/AutoComplete.svelte'
+  import AutoComplete2 from '~/components/AutoComplete2.svelte'
 
-  let testValues = null;
+  let selected = null;
 
-  async function getTest(): Promise<EndpointOutput> {
-    //const res = await fetch('/api/diag');
-    //const res = await fetch('/api/diag?limit=10&offset=1');    
-    const res = await fetch('/api/diag?limit=5&offset=0&searchedText=chol');
-    const data = await res.json();
-    return { body: data };
+  function onSelectItem(data) {
+    selected = data?.detail || null;
   }
-
-
-  onMount(async () => {
-    testValues = await getTest();
-    console.warn( JSON.stringify(testValues, undefined, 4) );
-  });
+  
 </script>
 
+{#if selected !== null}
+  <h3>Vybraná diagnóza:</h3>
+  <div class="px-6 py-6">
+    <em class="font-bold align-middle font-mono not-italic text-3xl">{selected.KOD}</em>
+    <span class="text-slate-500 align-middle px-2">{selected.NAZ}</span>
+  </div>
+{/if}
 
-<AutoComplete />
+<AutoComplete2 searchPlaceholder="hledat diagnózu" on:selectItem={onSelectItem} />
+
+<br /><br />
+<hr />
+<br /><br />
+
+<AutoComplete2 searchPlaceholder="nacten plny seznam a hledani offline" dataChunk=200000 />
